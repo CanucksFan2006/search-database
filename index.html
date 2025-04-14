@@ -1,9 +1,25 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Search Database</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Load JSON from Google Drive</title>
 </head>
 <body>
-    <script>
-        console.log("hello world")
+  <h1>Fetching JSON from Google Drive</h1>
+
+  <script>
+    // Replace with your Google Drive file ID
+    const fileId = '1A2B3C4D5E6F7G8H9'; // Example file ID
+    const fileUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+    let myData = null;
+
+    // Fetch and store JSON data from Google Drive
+    fetch(fileUrl)
+      .then(response => response.json())
+      .then(data => {
+        myData = data; // Store the data in the variable
+        console.log('JSON Loaded:', myData);
+      })
     </script>
-</body>
