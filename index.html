@@ -17,9 +17,22 @@
 
     // Fetch and store JSON data from Google Drive
     fetch(fileUrl)
-      .then(response => response.json())
+      .then(response => {
+        // Check if the response is successful
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
         myData = data; // Store the data in the variable
         console.log('JSON Loaded:', myData);
       })
-    </script>
+      .catch(error => {
+        // Handle any errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  </script>
+
+</body>
+</html>
